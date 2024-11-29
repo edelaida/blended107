@@ -31,3 +31,10 @@ export const updateProduct = async(productId, payload, options = {}) => {
       isNew: Boolean(rawResult?.lastErrorObject?.upserted),
   };
 };
+
+export const deleteProduct = async (productId) => {
+  const product = await ProductsCollection.findOneAndDelete({
+    _id: productId,
+  });
+  return product;
+};
