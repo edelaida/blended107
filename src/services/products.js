@@ -14,3 +14,20 @@ export const createProduct = async (payload) => {
   const product = await ProductsCollection.create(payload);
   return product;
 };
+export const updateProduct = async(productId, payload, options = {}) => {
+  const rawResult = await ProductsCollection.findOneAndUpdate(
+      { _id: productId },
+      payload,
+      {
+          new: true,
+          includeResultMetadata: true,
+          ...options,
+      },
+  );
+  if(!rawResult || !rawResult.value) return null;
+  
+  return {
+      contact: rawResult.value,
+      isNew: Boolean(rawResult?.lastErrorObject?.upserted),
+  };
+};
