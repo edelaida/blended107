@@ -44,7 +44,7 @@ export const createProductController = async (req, res) => {
 export const patchProductsByIdController = async (req, res, next) => {
   const { productId } = req.params;
   const result = await updateProduct(productId, req.body);
-  
+
   if (!result) {
     next(createHttpError(404, 'Product not found'));
     return;
@@ -52,7 +52,7 @@ export const patchProductsByIdController = async (req, res, next) => {
   res.json({
     status: 200,
     message: 'Successfully patched a product!',
-    data: result.student,
+    data: result.product,
   });
 };
 
@@ -63,6 +63,6 @@ export const deleteProductController = async (req, res, next) => {
   if (!product) {
     next(createHttpError(404, 'Product, not found'));
     return;
-  };
+  }
   res.status(204).send();
 };
