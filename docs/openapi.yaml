@@ -14,7 +14,10 @@ servers:
 paths:
   /products:
     get:
-      $ref: ../swager/paths/products/get.yaml
+      $ref: ../swagger/paths/products/get.yaml
+  /products/{id}:
+    get:
+      $ref: ../swagger/paths/products/{id}/get.yaml
 components:
   securitySchemes:
     bearerAuth:
