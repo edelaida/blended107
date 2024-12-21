@@ -1,19 +1,20 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: <назва вашого додатку>
+  title: 'Products App'
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  description: >
-    <опис вашого додатку>
+  description: 'Products App'
 tags:
-  # теги, що ви будете використовувати
+  - name: Products
+    description: Operations about products.
 servers:
   - url: http://localhost:3000
-  - url: #посилання на задеплоєний сайт
 paths:
-  # тут будуть посилання на ендпоінти
+  /products:
+    get:
+      $ref: ../swager/paths/products/get.yaml
 components:
   securitySchemes:
     bearerAuth:
